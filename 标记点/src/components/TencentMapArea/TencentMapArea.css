@@ -1,0 +1,309 @@
+.tencent-map-area {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.tencent-map-area .card-header {
+  flex-shrink: 0;
+}
+
+.tencent-map-area .card-title {
+  color: #333;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.tencent-map-area .subtitle {
+  color: #666;
+  font-size: 14px;
+  margin: 0;
+}
+
+.tencent-map-area .card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.map-container {
+  flex: 1;
+  position: relative;
+  min-height: 200px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #f0f2f5;
+}
+
+.map-instance {
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.3s ease;
+}
+
+/* 加载状态 */
+.map-loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 100;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  margin: 0 auto 16px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #1890ff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.map-loading p {
+  color: #666;
+  font-size: 14px;
+  margin: 0;
+}
+
+/* 错误状态 */
+.map-error {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 100;
+  padding: 20px;
+  max-width: 300px;
+}
+
+.error-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.map-error h4 {
+  color: #ff4d4f;
+  margin: 0 0 12px 0;
+  font-size: 18px;
+}
+
+.map-error p {
+  color: #666;
+  margin: 0 0 20px 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.map-error .btn {
+  padding: 8px 16px;
+  font-size: 14px;
+}
+
+/* 地图状态 */
+.map-status {
+  display: flex;
+  justify-content: space-between;
+  background: #f5f5f5;
+  padding: 12px;
+  border-radius: 6px;
+  margin-top: 15px;
+  border-top: 1px solid #f0f0f0;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.status-label {
+  font-size: 12px;
+  color: #666;
+  flex-shrink: 0;
+}
+
+.status-value {
+  font-size: 13px;
+  font-weight: 500;
+  color: #333;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.status-value.online {
+  color: #52c41a;
+}
+
+.status-value.offline {
+  color: #ff4d4f;
+}
+
+/* 地图标记点样式覆盖 */
+.map-container .qq-maps-marker {
+  transition: all 0.3s ease;
+}
+
+.map-container .qq-maps-marker:hover {
+  transform: scale(1.1);
+  z-index: 1000;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .map-container {
+    min-height: 150px;
+  }
+  
+  .map-status {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .status-item {
+    justify-content: space-between;
+  }
+  
+  .status-label {
+    font-size: 13px;
+  }
+  
+  .status-value {
+    font-size: 14px;
+  }
+  
+  .map-error {
+    padding: 15px;
+    max-width: 250px;
+  }
+  
+  .map-error h4 {
+    font-size: 16px;
+  }
+  
+  .error-icon {
+    font-size: 36px;
+    margin-bottom: 12px;
+  }
+}
+
+/* 高对比度模式支持 */
+@media (prefers-contrast: high) {
+  .map-container {
+    border: 2px solid #000;
+  }
+  
+  .status-value.online {
+    color: #008000;
+  }
+  
+  .status-value.offline {
+    color: #ff0000;
+  }
+}
+
+/* 减少动画模式支持 */
+@media (prefers-reduced-motion: reduce) {
+  .loading-spinner {
+    animation: none;
+  }
+  
+  .map-instance {
+    transition: none;
+  }
+  
+  .map-container .qq-maps-marker {
+    transition: none;
+  }
+}
+
+/* 打印样式 */
+@media print {
+  .tencent-map-area {
+    page-break-inside: avoid;
+  }
+  
+  .map-loading,
+  .map-error,
+  .map-status {
+    display: none;
+  }
+  
+  .map-container {
+    border: 1px solid #000;
+    background: #fff;
+  }
+}
+
+/* 无障碍支持 */
+.map-container:focus-within {
+  outline: 2px solid #1890ff;
+  outline-offset: 2px;
+}
+
+/* 地图控制按钮样式覆盖 */
+.map-container .qq-maps-control {
+  font-family: inherit;
+}
+
+.map-container .qq-maps-control button {
+  background: white;
+  border: 1px solid #ddd;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+.map-container .qq-maps-control button:hover {
+  background: #f0f0f0;
+  border-color: #1890ff;
+}
+
+.map-container .qq-maps-control button:focus {
+  outline: 2px solid #1890ff;
+  outline-offset: 1px;
+}
+
+/* 地图信息窗口样式覆盖 */
+.map-container .qq-maps-info-window {
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.map-container .qq-maps-info-window-content {
+  padding: 8px 12px;
+  max-width: 200px;
+  word-wrap: break-word;
+}
+
+.map-container .qq-maps-info-window-close {
+  top: 8px;
+  right: 8px;
+  width: 16px;
+  height: 16px;
+  background: #ff4d4f;
+  color: white;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.map-container .qq-maps-info-window-close:hover {
+  background: #ff7875;
+} 

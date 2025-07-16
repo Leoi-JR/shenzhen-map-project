@@ -1,0 +1,408 @@
+.coordinate-list {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.coordinate-list .card-header {
+  flex-shrink: 0;
+}
+
+.coordinate-list .card-title {
+  color: #333;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.coordinate-list .subtitle {
+  color: #666;
+  font-size: 14px;
+  margin: 0;
+}
+
+.coordinate-list .card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.list-container {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0;
+}
+
+/* 空状态 */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  color: #999;
+  height: 100%;
+  min-height: 200px;
+}
+
+.empty-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.empty-text {
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: #666;
+}
+
+.empty-hint {
+  font-size: 14px;
+  color: #999;
+  margin: 0;
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* 坐标项目列表 */
+.coordinate-items {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 4px;
+}
+
+.coordinate-item {
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+  padding: 16px;
+  background: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.coordinate-item:hover {
+  border-color: #1890ff;
+  box-shadow: 0 2px 8px rgba(24, 144, 255, 0.15);
+}
+
+.coordinate-item.selected {
+  border-color: #1890ff;
+  background: #f0f8ff;
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+}
+
+.coordinate-item.completed {
+  border-left: 4px solid #52c41a;
+}
+
+.coordinate-item.incomplete {
+  border-left: 4px solid #ff4d4f;
+}
+
+/* 项目头部 */
+.item-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.item-index {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #1890ff;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.item-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.status-dot.completed {
+  background: #52c41a;
+}
+
+.status-dot.incomplete {
+  background: #ff4d4f;
+}
+
+.status-text {
+  font-size: 12px;
+  color: #666;
+  font-weight: 500;
+}
+
+.delete-btn {
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 50%;
+  background: #ff4d4f;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.delete-btn:hover {
+  background: #ff7875;
+  transform: scale(1.1);
+}
+
+.delete-btn:active {
+  transform: scale(0.95);
+}
+
+/* 项目内容 */
+.item-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.coord-section {
+  background: #f8f9fa;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #e9ecef;
+}
+
+.coord-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 8px 0;
+}
+
+.coord-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.coord-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+}
+
+.coord-label {
+  color: #666;
+  font-weight: 500;
+  min-width: 80px;
+}
+
+.coord-value {
+  color: #333;
+  font-family: 'Courier New', monospace;
+  font-weight: 600;
+  text-align: right;
+}
+
+.coord-pair {
+  font-size: 11px;
+  word-break: break-all;
+}
+
+.coord-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  color: #999;
+  font-style: italic;
+}
+
+.coord-empty .empty-text {
+  font-size: 12px;
+  margin: 0;
+}
+
+/* 项目底部 */
+.item-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #f0f0f0;
+  font-size: 11px;
+  color: #999;
+}
+
+.item-id,
+.item-timestamp {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.id-label,
+.time-label {
+  font-weight: 500;
+}
+
+.id-value {
+  font-family: 'Courier New', monospace;
+  background: #f0f0f0;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-size: 10px;
+}
+
+.time-value {
+  font-family: 'Courier New', monospace;
+}
+
+/* 滚动条样式 */
+.list-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.list-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.list-container::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.list-container::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a1;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .coordinate-item {
+    padding: 12px;
+  }
+  
+  .item-content {
+    gap: 12px;
+  }
+  
+  .coord-section {
+    padding: 8px;
+  }
+  
+  .coord-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+  
+  .coord-label {
+    min-width: auto;
+    font-size: 11px;
+  }
+  
+  .coord-value {
+    font-size: 11px;
+    text-align: left;
+  }
+  
+  .item-footer {
+    flex-direction: column;
+    gap: 4px;
+    align-items: flex-start;
+  }
+  
+  .coordinate-items {
+    gap: 8px;
+  }
+}
+
+/* 无障碍支持 */
+.coordinate-item:focus {
+  outline: 2px solid #1890ff;
+  outline-offset: 2px;
+}
+
+.delete-btn:focus {
+  outline: 2px solid #ff4d4f;
+  outline-offset: 2px;
+}
+
+/* 高对比度模式 */
+@media (prefers-contrast: high) {
+  .coordinate-item {
+    border-color: #000;
+  }
+  
+  .coordinate-item.selected {
+    background: #e6f7ff;
+    border-color: #000;
+  }
+  
+  .status-dot.completed {
+    background: #006400;
+  }
+  
+  .status-dot.incomplete {
+    background: #8b0000;
+  }
+}
+
+/* 减少动画模式 */
+@media (prefers-reduced-motion: reduce) {
+  .coordinate-item {
+    transition: none;
+  }
+  
+  .delete-btn {
+    transition: none;
+  }
+}
+
+/* 打印样式 */
+@media print {
+  .coordinate-list {
+    page-break-inside: avoid;
+  }
+  
+  .delete-btn {
+    display: none;
+  }
+  
+  .coordinate-item {
+    border: 1px solid #000;
+    box-shadow: none;
+    margin-bottom: 10px;
+  }
+  
+  .item-header {
+    border-bottom: 1px solid #000;
+    padding-bottom: 5px;
+  }
+  
+  .coord-section {
+    background: #fff;
+    border: 1px solid #000;
+  }
+} 
