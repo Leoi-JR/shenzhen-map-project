@@ -1,0 +1,322 @@
+.app {
+  min-height: 100vh;
+  padding: 20px;
+  background: #f5f5f5;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+.file-selection-section {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.file-selection-container h3 {
+  margin-top: 0;
+  color: #333;
+  font-size: 1.2em;
+  margin-bottom: 15px;
+}
+
+.file-selection-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.file-select {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  background: white;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.file-select:hover {
+  border-color: #007bff;
+}
+
+.file-select:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.file-select:disabled {
+  background: #f5f5f5;
+  color: #999;
+  cursor: not-allowed;
+}
+
+.refresh-button {
+  padding: 8px 16px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+  white-space: nowrap;
+}
+
+.refresh-button:hover:not(:disabled) {
+  background: #0056b3;
+}
+
+.refresh-button:disabled {
+  background: #6c757d;
+  cursor: not-allowed;
+}
+
+.selected-file-info {
+  color: #28a745;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 12px;
+  background: #f8f9fa;
+  border-radius: 4px;
+  border-left: 4px solid #28a745;
+}
+
+.no-files-warning {
+  color: #dc3545;
+  font-size: 14px;
+  padding: 8px 12px;
+  background: #f8f9fa;
+  border-radius: 4px;
+  border-left: 4px solid #dc3545;
+}
+
+.main-container {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.map-section {
+  flex: 1;
+  min-width: 400px;
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.map-section h3 {
+  margin-top: 0;
+  color: #333;
+  font-size: 1.2em;
+  margin-bottom: 15px;
+}
+
+.upload-area {
+  width: 100%;
+}
+
+.upload-area input[type="file"] {
+  margin-bottom: 10px;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.hand-drawn-map {
+  width: 100%;
+  height: 700px;
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background: #fafafa;
+}
+
+.hand-drawn-map:hover {
+  border-color: #007bff;
+}
+
+.placeholder {
+  color: #666;
+  font-size: 16px;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.image-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.image-random-marker {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font-size: 28px;
+  z-index: 1000;
+  color: #ff4444;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  animation: bounce 0.5s ease-in-out;
+  pointer-events: none;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translate(-50%, -50%) translateY(0);
+  }
+  40% {
+    transform: translate(-50%, -50%) translateY(-10px);
+  }
+  60% {
+    transform: translate(-50%, -50%) translateY(-5px);
+  }
+}
+
+.tencent-map-wrapper {
+  position: relative;
+  width: 100%;
+  height: 750px;
+}
+
+.tencent-map {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.map-loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 100;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  margin: 0 auto 16px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #007bff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.map-loading p {
+  margin: 0;
+  color: #666;
+  font-size: 14px;
+}
+
+.map-error {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 100;
+}
+
+.map-error p {
+  margin: 0 0 16px 0;
+  font-size: 16px;
+}
+
+.map-error button {
+  padding: 8px 16px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.map-error button:hover {
+  background: #0056b3;
+}
+
+.output-section {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.output-section h3 {
+  margin-top: 0;
+  color: #333;
+  font-size: 1.2em;
+  margin-bottom: 15px;
+}
+
+.coordinates-output {
+  background: #f8f9fa;
+  border-radius: 6px;
+  padding: 15px;
+  border-left: 4px solid #007bff;
+}
+
+.coordinates-output p {
+  margin: 5px 0;
+  color: #555;
+  font-family: 'Courier New', monospace;
+}
+
+.coordinates-output p:last-child {
+  margin-bottom: 0;
+  font-weight: bold;
+  color: #007bff;
+}
+
+/* 缩放组件样式覆盖 */
+.react-transform-wrapper {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.react-transform-component {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* 确保拖动功能正常工作 */
+.react-transform-wrapper > div {
+  cursor: grab;
+}
+
+.react-transform-wrapper > div:active {
+  cursor: grabbing;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .main-container {
+    flex-direction: column;
+  }
+  
+  .map-section {
+    min-width: auto;
+  }
+  
+  .hand-drawn-map,
+  .tencent-map-wrapper {
+    height: 300px;
+  }
+} 
