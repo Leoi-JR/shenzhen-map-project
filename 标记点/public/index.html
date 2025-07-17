@@ -1,15 +1,122 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
+  <head>
     <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta name="description" content="标记点应用 - 在手绘地图上标记点并与腾讯地图对应" />
-    <title>标记点应用</title>
-    <script src="https://map.qq.com/api/js?v=2.exp&key=LQPBZ-S3ZK7-BWSXJ-PDZ5L-ZURM5-LQBUB"></script>
-</head>
-<body>
-    <noscript>您需要启用 JavaScript 来运行这个应用程序。</noscript>
+    <meta name="theme-color" content="#1890ff" />
+    <meta name="description" content="手绘地图与腾讯地图坐标映射工具 - 建立手绘地图与真实地理坐标的对应关系" />
+    <meta name="keywords" content="地图,坐标映射,手绘地图,腾讯地图,坐标转换" />
+    <meta name="author" content="Map Coordinate Mapper" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="手绘地图坐标映射工具" />
+    <meta property="og:description" content="建立手绘地图与腾讯地图的坐标对应关系" />
+    <meta property="og:image" content="%PUBLIC_URL%/og-image.png" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content="手绘地图坐标映射工具" />
+    <meta property="twitter:description" content="建立手绘地图与腾讯地图的坐标对应关系" />
+    <meta property="twitter:image" content="%PUBLIC_URL%/twitter-image.png" />
+    
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    
+    <!-- 预加载腾讯地图API -->
+    <link rel="preconnect" href="https://map.qq.com">
+    <link rel="dns-prefetch" href="https://map.qq.com">
+    
+    <!-- 腾讯地图API -->
+    <!-- 注意：需要替换YOUR_TENCENT_MAP_KEY为实际的API密钥 -->
+    <script src="https://map.qq.com/api/gljs?v=1.exp&key=LQPBZ-S3ZK7-BWSXJ-PDZ5L-ZURM5-LQBUB" defer></script>
+    
+    <title>手绘地图坐标映射工具</title>
+    
+    <style>
+      /* 加载动画 */
+      .app-loading {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #f0f2f5;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        z-index: 9999;
+      }
+      
+      .loading-spinner {
+        width: 40px;
+        height: 40px;
+        border: 3px solid #f3f3f3;
+        border-top: 3px solid #1890ff;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin-bottom: 16px;
+      }
+      
+      .loading-text {
+        color: #666;
+        font-size: 14px;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif;
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      
+      /* 隐藏加载动画 */
+      .app-loaded .app-loading {
+        display: none;
+      }
+      
+      /* 阻止页面滚动当加载时 */
+      body.loading {
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body class="loading">
+    <noscript>您需要启用JavaScript才能运行此应用。</noscript>
+    
+    <!-- 加载动画 -->
+    <div class="app-loading">
+      <div class="loading-spinner"></div>
+      <div class="loading-text">手绘地图坐标映射工具加载中...</div>
+    </div>
+    
+    <!-- React应用挂载点 -->
     <div id="root"></div>
-</body>
+    
+    <script>
+      // 页面加载完成后移除加载动画
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          document.body.classList.remove('loading');
+          document.body.classList.add('app-loaded');
+        }, 500);
+      });
+      
+      // 错误处理
+      window.addEventListener('error', function(e) {
+        console.error('应用加载错误:', e.error);
+      });
+      
+      // 腾讯地图API加载错误处理
+      window.addEventListener('DOMContentLoaded', function() {
+        // 检查腾讯地图API是否正确加载
+        setTimeout(function() {
+          if (typeof window.TMap === 'undefined') {
+            console.warn('腾讯地图API未正确加载，请检查API密钥配置');
+          }
+        }, 3000);
+      });
+    </script>
+  </body>
 </html> 

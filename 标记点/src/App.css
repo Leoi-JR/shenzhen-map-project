@@ -1,152 +1,358 @@
-.app {
+/* 主应用布局 */
+.app-layout {
+  min-height: 100vh;
+  background: #f0f2f5;
+  position: relative;
+}
+
+/* 头部样式 */
+.app-header {
+  background: linear-gradient(135deg, #1890ff 0%, #096dd9 100%);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 0;
+  height: auto;
+  line-height: normal;
+  position: relative;
+  z-index: 10;
+}
+
+.header-content {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 20px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  background-color: #f5f5f5;
-  min-height: 100vh;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
 }
 
-.header {
-  text-align: center;
-  margin-bottom: 30px;
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.header h1 {
-  color: #333;
-  margin: 0 0 10px 0;
-  font-size: 2rem;
-}
-
-.header p {
-  color: #666;
-  margin: 0;
-  font-size: 1.1rem;
-}
-
-.upload-section {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.upload-button {
-  background: #1890ff;
-  color: white;
-  border: none;
-  padding: 12px 24px;
-  border-radius: 6px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.upload-button:hover {
-  background: #40a9ff;
-}
-
-.upload-button:active {
-  background: #096dd9;
-}
-
-.main-content {
-  display: grid;
-  grid-template-columns: 1fr 400px;
-  gap: 20px;
-  min-height: 600px;
-}
-
-.map-areas {
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-  gap: 20px;
-}
-
-.data-section {
+.header-left {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 4px;
 }
 
-.save-section {
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+/* 内容区域 */
+.app-content {
+  padding: 24px;
+  background: #f0f2f5;
+  position: relative;
+}
+
+.content-wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  position: relative;
+}
+
+/* 步骤指示器 */
+.steps-container {
   background: white;
-  padding: 20px;
+  padding: 20px 24px;
   border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-.save-button {
-  background: #52c41a;
-  color: white;
-  border: none;
-  padding: 12px 24px;
+/* 操作步骤和使用提示 - 水平布局容器 */
+.steps-and-hints-container {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  background: white;
+  padding: 20px 24px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* 操作步骤区域 - 左侧 */
+.steps-section {
+  flex: 1;
+  min-width: 0;
+}
+
+/* 操作步骤包装器 - 模仿Alert样式 */
+.steps-wrapper {
+  width: 100%;
+  padding: 12px 16px;
+  background-color: #e6f7ff;
+  border: 1px solid #91d5ff;
   border-radius: 6px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  min-width: 120px;
+  position: relative;
 }
 
-.save-button:hover:not(:disabled) {
-  background: #73d13d;
+.steps-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
 }
 
-.save-button:active:not(:disabled) {
-  background: #389e0d;
+.steps-icon {
+  color: #1890ff;
+  font-size: 14px;
 }
 
-.save-button:disabled {
-  background: #d9d9d9;
-  cursor: not-allowed;
+.steps-title {
+  color: #1890ff;
+  font-weight: 600;
+  font-size: 14px;
+  margin: 0;
 }
 
-/* 响应式设计 */
+.steps-wrapper .operation-steps {
+  margin: 0;
+}
+
+/* 使用提示区域 - 右侧 */
+.hints-section {
+  flex: 1;
+  min-width: 0;
+}
+
+/* 调整Alert组件在新布局中的样式 */
+.hints-section .usage-hint {
+  margin: 0;
+  box-shadow: none;
+}
+
+.operation-steps {
+  max-width: 100%;
+  margin: 0;
+}
+
+.operation-steps .ant-steps-item-title {
+  font-weight: 600;
+  color: #262626;
+}
+
+.operation-steps .ant-steps-item-description {
+  color: #8c8c8c;
+  font-size: 12px;
+}
+
+.operation-steps .ant-steps-item-process .ant-steps-item-icon {
+  background: #1890ff;
+  border-color: #1890ff;
+}
+
+.operation-steps .ant-steps-item-finish .ant-steps-item-icon {
+  background: #52c41a;
+  border-color: #52c41a;
+}
+
+/* 使用提示 */
+.usage-hint {
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.usage-hint .ant-alert-description p {
+  margin: 4px 0;
+  color: #595959;
+  font-size: 14px;
+}
+
+.usage-hint .ant-alert-description p:first-child {
+  margin-top: 0;
+}
+
+.usage-hint .ant-alert-description p:last-child {
+  margin-bottom: 0;
+}
+
+/* 主工作区域 */
+.main-workspace {
+  margin-bottom: 0;
+  position: relative;
+}
+
+.main-workspace .ant-col {
+  margin-bottom: 24px;
+  position: relative;
+}
+
+/* 坐标记录区域 */
+.coordinate-section {
+  margin-bottom: 0;
+  position: relative;
+  z-index: 2;
+}
+
+/* 已保存文件区域 */
+.saved-files-section {
+  margin-bottom: 0;
+  position: relative;
+  z-index: 2;
+}
+
+/* 卡片通用样式 */
+.ant-card {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.ant-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.ant-card-head {
+  border-bottom: 1px solid #f0f0f0;
+  background: #fafafa;
+}
+
+.ant-card-head-title {
+  padding: 16px 0;
+  font-weight: 600;
+}
+
+.ant-card-body {
+  padding: 20px;
+}
+
+/* 响应式布局 */
 @media (max-width: 1200px) {
-  .main-content {
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr auto;
+  .content-wrapper {
+    max-width: 100%;
   }
   
-  .data-section {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
-    display: grid;
-  }
-  
-  .save-section {
-    grid-column: 1 / -1;
+  .app-content {
+    padding: 16px;
   }
 }
 
 @media (max-width: 768px) {
-  .app {
-    padding: 10px;
+  .header-content {
+    padding: 12px 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
   }
   
-  .header h1 {
-    font-size: 1.5rem;
+  .header-left {
+    width: 100%;
   }
   
-  .header p {
-    font-size: 1rem;
+  .header-right {
+    width: 100%;
+    justify-content: flex-start;
   }
   
-  .map-areas {
-    grid-template-rows: 300px 300px;
+  .app-content {
+    padding: 12px;
   }
   
-  .data-section {
-    grid-template-columns: 1fr;
-    gap: 15px;
+  .content-wrapper {
+    gap: 16px;
   }
   
-  .main-content {
-    gap: 15px;
+  /* 在移动设备上改为垂直布局 */
+  .steps-and-hints-container {
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+    align-items: stretch;
   }
-} 
+  
+  .steps-section,
+  .hints-section {
+    flex: none;
+    width: 100%;
+  }
+  
+  .operation-steps {
+    max-width: 100%;
+  }
+  
+  .operation-steps .ant-steps-item-title {
+    font-size: 14px;
+  }
+  
+  .operation-steps .ant-steps-item-description {
+    font-size: 11px;
+  }
+  
+  .main-workspace .ant-col {
+    margin-bottom: 16px;
+  }
+  
+  .ant-card-body {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-content {
+    padding: 8px 12px;
+  }
+  
+  .header-left h3 {
+    font-size: 16px;
+  }
+  
+  .app-content {
+    padding: 8px;
+  }
+  
+  .steps-and-hints-container {
+    padding: 12px;
+    gap: 12px;
+  }
+  
+  .ant-card-body {
+    padding: 12px;
+  }
+  
+  .usage-hint .ant-alert-description p {
+    font-size: 13px;
+  }
+}
+
+/* 滚动条美化 */
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* 自定义主题色 */
+.ant-btn-primary {
+  background: linear-gradient(135deg, #1890ff 0%, #096dd9 100%);
+  border: none;
+  box-shadow: 0 2px 4px rgba(24, 144, 255, 0.3);
+}
+
+.ant-btn-primary:hover {
+  background: linear-gradient(135deg, #40a9ff 0%, #1890ff 100%);
+  box-shadow: 0 4px 8px rgba(24, 144, 255, 0.4);
+}
+
+/* 文字选择样式 */
+::selection {
+  background: rgba(24, 144, 255, 0.2);
+  color: #1890ff;
+}
