@@ -138,6 +138,16 @@ declare global {
         LatLng: any;
         Marker: any;
         event: any;
+        MapTypeId: {
+          ROADMAP: string;
+          SATELLITE: string;
+          HYBRID: string;
+          TERRAIN: string;
+        };
+        MarkerAnimation: {
+          BOUNCE: string;
+          DROP: string;
+        };
         // 更多腾讯地图 API 类型
       };
     };
