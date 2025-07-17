@@ -1,0 +1,291 @@
+.tencent-map-area {
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+  height: 780px; /* 固定Card总高度 */
+}
+
+.tencent-map-area .ant-card-head {
+  height: 72px; /* 固定header高度 */
+  min-height: 72px;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+}
+
+.tencent-map-area .ant-card-head-title {
+  padding: 16px 0;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.tencent-map-area .ant-card-body {
+  height: calc(100% - 72px); /* 减去header高度 */
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.tencent-map-area.active {
+  border-color: #52c41a;
+  box-shadow: 0 0 0 2px rgba(82, 196, 26, 0.2);
+}
+
+.area-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.map-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 100%; /* 占满Card body */
+  padding: 20px;
+}
+
+/* 搜索容器样式 */
+.search-container {
+  position: relative;
+  z-index: 1001;
+  flex-shrink: 0;
+}
+
+.search-container .ant-input-search {
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.search-container .ant-input-search .ant-input {
+  font-size: 14px;
+  height: 40px;
+}
+
+.search-container .ant-input-search .ant-input-search-button {
+  height: 40px;
+  border-radius: 0 6px 6px 0;
+}
+
+/* 搜索结果样式 */
+.search-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: white;
+  border-radius: 6px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  max-height: 300px;
+  overflow-y: auto;
+  margin-top: 4px;
+  /* 确保搜索结果区域的事件不会传播到地图 */
+  pointer-events: auto;
+  border: 1px solid #f0f0f0;
+}
+
+.search-results-list {
+  margin: 0;
+  padding: 0;
+}
+
+.search-result-item {
+  border-bottom: 1px solid #f0f0f0;
+  padding: 12px 16px;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+  display: block;
+}
+
+.search-result-item:hover {
+  background-color: #f5f5f5;
+}
+
+.search-result-item:last-child {
+  border-bottom: none;
+}
+
+
+
+.search-result-content {
+  width: 100%;
+}
+
+.search-result-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #262626;
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+
+.search-result-address {
+  font-size: 12px;
+  color: #8c8c8c;
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+
+.search-result-distance {
+  font-size: 11px;
+  color: #1890ff;
+  font-weight: 500;
+}
+
+.operation-hint {
+  padding: 8px 16px;
+  background: #f6ffed;
+  border-radius: 4px;
+  margin-bottom: 12px;
+  text-align: center;
+  flex-shrink: 0; /* 不压缩 */
+}
+
+.map-wrapper {
+  flex: 1; /* 自动填充剩余空间 */
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  background: #f5f5f5;
+}
+
+.map-loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #fafafa;
+  z-index: 2;
+}
+
+.map-container-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.map-container-inner.clickable {
+  cursor: crosshair;
+}
+
+/* 腾讯地图控件样式调整 - 关键修复 */
+.map-container-inner .tmap-control-container {
+  z-index: 100 !important;
+  position: relative !important;
+}
+
+.map-container-inner .tmap-logo {
+  opacity: 0.5;
+  z-index: 100 !important;
+}
+
+.map-container-inner .tmap-scale-control {
+  z-index: 100 !important;
+}
+
+.map-container-inner .tmap-zoom-control {
+  z-index: 100 !important;
+}
+
+
+
+/* 确保地图canvas不超出容器 */
+.map-container-inner canvas {
+  max-width: 100% !important;
+  max-height: 100% !important;
+  display: block !important;
+}
+
+/* 坐标显示 */
+.coordinate-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  background: #fafafa;
+  border-radius: 4px;
+  margin-top: 8px;
+  font-size: 12px;
+  flex-shrink: 0; /* 不压缩 */
+}
+
+/* 地图错误状态 */
+.map-error {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .tencent-map-area {
+    height: 600px; /* 移动端Card总高度 */
+  }
+  
+  .tencent-map-area .ant-card-head {
+    height: 72px; /* 移动端也保持一致的header高度 */
+    min-height: 72px;
+  }
+  
+  .tencent-map-area .ant-card-body {
+    height: calc(100% - 72px); /* 保持一致的header高度计算 */
+  }
+  
+  .coordinate-display {
+    font-size: 11px;
+    padding: 6px 10px;
+  }
+  
+  .search-container .ant-input-search .ant-input {
+    height: 36px;
+    font-size: 13px;
+  }
+  
+  .search-container .ant-input-search .ant-input-search-button {
+    height: 36px;
+  }
+  
+  .search-results {
+    max-height: 250px;
+  }
+  
+  .search-result-title {
+    font-size: 13px;
+  }
+  
+  .search-result-address {
+    font-size: 11px;
+  }
+  
+  .search-result-distance {
+    font-size: 10px;
+  }
+}
+
+/* 地图标记点动画 */
+@keyframes map-marker-bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+/* 自定义地图标记样式 */
+.custom-map-marker {
+  animation: map-marker-bounce 2s infinite;
+} 

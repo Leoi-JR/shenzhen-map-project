@@ -1,0 +1,192 @@
+.coordinate-list {
+  min-height: 400px;
+  position: relative;
+  z-index: 3;
+}
+
+.area-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.mapping-count {
+  margin-left: auto;
+}
+
+.list-container {
+  height: 100%;
+}
+
+/* 统计栏 */
+.statistics-bar {
+  padding: 12px 16px;
+  background: #fafafa;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  border: 1px solid #f0f0f0;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #666;
+  font-size: 13px;
+}
+
+.stat-item .anticon {
+  color: #1890ff;
+}
+
+/* 表格样式 */
+.coordinate-table {
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.coordinate-table .ant-table-thead > tr > th {
+  background: #f8f9fa;
+  border-bottom: 2px solid #e9ecef;
+  font-weight: 600;
+  color: #495057;
+  text-align: center;
+}
+
+.coordinate-table .ant-table-tbody > tr:hover > td {
+  background: #f0f8ff;
+}
+
+/* 坐标单元格 */
+.coordinate-cell {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 4px 8px;
+  align-items: center;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.coordinate-label {
+  color: #666;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.coordinate-value {
+  color: #1890ff;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-weight: 600;
+  background: #f0f8ff;
+  padding: 2px 6px;
+  border-radius: 3px;
+  border: 1px solid #e6f4ff;
+}
+
+/* 时间文本 */
+.time-text {
+  font-size: 11px;
+  line-height: 1.3;
+  display: block;
+}
+
+/* 空状态 */
+.empty-description {
+  text-align: center;
+  padding: 20px;
+}
+
+/* 操作按钮 */
+.coordinate-table .ant-btn {
+  transition: all 0.2s ease;
+}
+
+.coordinate-table .ant-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 分页样式 */
+.coordinate-table .ant-pagination {
+  margin: 16px 0 0 0;
+  text-align: center;
+}
+
+.coordinate-table .ant-pagination .ant-pagination-item-active {
+  border-color: #1890ff;
+  background: #1890ff;
+}
+
+.coordinate-table .ant-pagination .ant-pagination-item-active a {
+  color: #fff;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .area-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .mapping-count {
+    margin-left: 0;
+  }
+  
+  .statistics-bar {
+    padding: 8px 12px;
+  }
+  
+  .statistics-bar .ant-space {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .coordinate-cell {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+  
+  .coordinate-label {
+    font-size: 10px;
+  }
+  
+  .coordinate-value {
+    font-size: 11px;
+    padding: 1px 4px;
+  }
+  
+  .time-text {
+    font-size: 10px;
+  }
+  
+  .coordinate-table .ant-table-thead > tr > th {
+    padding: 8px 4px;
+    font-size: 12px;
+  }
+  
+  .coordinate-table .ant-table-tbody > tr > td {
+    padding: 8px 4px;
+  }
+}
+
+/* 表格滚动条美化 */
+.coordinate-table .ant-table-body::-webkit-scrollbar {
+  height: 6px;
+}
+
+.coordinate-table .ant-table-body::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.coordinate-table .ant-table-body::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.coordinate-table .ant-table-body::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+} 

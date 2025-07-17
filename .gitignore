@@ -323,3 +323,10 @@ saved-data123/
 
 # 批处理文件可能包含敏感信息
 *.bat 
+
+# integrated-map-project 前端项目忽略规则
+integrated-map-project/node_modules/
+integrated-map-project/build/
+# 可选：忽略日志、临时文件等
+integrated-map-project/*.log
+integrated-map-project/.env 

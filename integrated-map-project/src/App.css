@@ -1,0 +1,413 @@
+/* 主应用布局 */
+.app-layout {
+  min-height: 100vh;
+  background: #f0f2f5;
+  position: relative;
+}
+
+/* 头部样式 */
+.app-header {
+  background: linear-gradient(135deg, #1890ff 0%, #096dd9 100%);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 0;
+  height: auto;
+  line-height: normal;
+  position: relative;
+  z-index: 10;
+}
+
+.header-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+
+
+/* 导航栏样式 */
+.nav-bar {
+  background: #fff;
+  border-bottom: 1px solid #f0f0f0;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  padding: 8px 0;
+  position: sticky;
+  top: 0;
+  z-index: 9;
+}
+
+.nav-bar .ant-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  border-radius: 6px;
+  margin: 0 8px;
+  transition: all 0.2s ease;
+}
+
+.nav-bar .ant-menu-item:hover {
+  background: #f0f8ff;
+}
+
+.nav-bar .ant-menu-item-selected {
+  background: #e6f7ff;
+  color: #1890ff;
+}
+
+/* 内容区域 */
+.app-content {
+  padding: 24px;
+  background: #f0f2f5;
+  position: relative;
+}
+
+.content-wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  position: relative;
+}
+
+/* 操作步骤和使用提示 - 水平布局容器 */
+.steps-and-hints-container {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  background: white;
+  padding: 20px 24px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* 操作步骤区域 - 左侧 */
+.steps-section {
+  flex: 1;
+  min-width: 0;
+}
+
+/* 操作步骤包装器 - 模仿Alert样式 */
+.steps-wrapper {
+  width: 100%;
+  padding: 12px 16px;
+  background-color: #e6f7ff;
+  border: 1px solid #91d5ff;
+  border-radius: 6px;
+  position: relative;
+}
+
+.steps-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.steps-icon {
+  color: #1890ff;
+  font-size: 14px;
+}
+
+.steps-title {
+  color: #1890ff;
+  font-weight: 600;
+  font-size: 14px;
+  margin: 0;
+}
+
+.steps-wrapper .operation-steps {
+  margin: 0;
+}
+
+/* 使用提示区域 - 右侧 */
+.hints-section {
+  flex: 1;
+  min-width: 0;
+}
+
+/* 调整Alert组件在新布局中的样式 */
+.hints-section .usage-hint {
+  margin: 0;
+  box-shadow: none;
+}
+
+.operation-steps {
+  max-width: 100%;
+  margin: 0;
+}
+
+.operation-steps .ant-steps-item-title {
+  font-weight: 600;
+  color: #262626;
+}
+
+.operation-steps .ant-steps-item-description {
+  color: #8c8c8c;
+  font-size: 12px;
+}
+
+.operation-steps .ant-steps-item-process .ant-steps-item-icon {
+  background: #1890ff;
+  border-color: #1890ff;
+}
+
+.operation-steps .ant-steps-item-finish .ant-steps-item-icon {
+  background: #52c41a;
+  border-color: #52c41a;
+}
+
+/* 使用提示 */
+.usage-hint {
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.usage-hint .ant-alert-description p {
+  margin: 4px 0;
+  color: #595959;
+  font-size: 14px;
+}
+
+.usage-hint .ant-alert-description p:first-child {
+  margin-top: 0;
+}
+
+.usage-hint .ant-alert-description p:last-child {
+  margin-bottom: 0;
+}
+
+/* 主要工作区域 */
+.main-workspace {
+  margin-bottom: 0;
+  position: relative;
+}
+
+.main-workspace .ant-col {
+  margin-bottom: 24px;
+  position: relative;
+}
+
+/* 坐标记录区域 */
+.coordinate-section {
+  margin-bottom: 0;
+  position: relative;
+  z-index: 2;
+}
+
+/* 已保存文件区域 */
+.saved-files-section {
+  margin-bottom: 0;
+  position: relative;
+  z-index: 2;
+}
+
+/* 卡片通用样式 */
+.ant-card {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.ant-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.ant-card-head {
+  border-bottom: 1px solid #f0f0f0;
+  background: #fafafa;
+}
+
+.ant-card-head-title {
+  padding: 16px 0;
+  font-weight: 600;
+}
+
+.ant-card-body {
+  padding: 20px;
+}
+
+/* 响应式设计 */
+@media (max-width: 1200px) {
+  .content-wrapper {
+    max-width: 100%;
+  }
+  
+  .app-content {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-content {
+    padding: 12px 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  
+  .header-left {
+    width: 100%;
+  }
+  
+  .header-right {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  
+  .nav-bar {
+    padding: 4px 0;
+  }
+  
+  .nav-bar .ant-menu-item {
+    margin: 0 4px;
+    font-size: 12px;
+  }
+  
+  .app-content {
+    padding: 12px;
+  }
+  
+  .content-wrapper {
+    gap: 16px;
+  }
+  
+  /* 在移动设备上改为垂直布局 */
+  .steps-and-hints-container {
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+    align-items: stretch;
+  }
+  
+  .steps-section,
+  .hints-section {
+    flex: none;
+    width: 100%;
+  }
+  
+  .operation-steps {
+    max-width: 100%;
+  }
+  
+  .operation-steps .ant-steps-item-title {
+    font-size: 14px;
+  }
+  
+  .operation-steps .ant-steps-item-description {
+    font-size: 11px;
+  }
+  
+  .main-workspace .ant-col {
+    margin-bottom: 16px;
+  }
+  
+  .ant-card-body {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-content {
+    padding: 8px 12px;
+  }
+  
+  .header-left h3 {
+    font-size: 16px;
+  }
+  
+  .app-content {
+    padding: 8px;
+  }
+  
+  .steps-and-hints-container {
+    padding: 12px;
+    gap: 12px;
+  }
+  
+  .ant-card-body {
+    padding: 12px;
+  }
+  
+  .usage-hint .ant-alert-description p {
+    font-size: 13px;
+  }
+}
+
+/* 动画效果 */
+.content-wrapper > * {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 按钮样式增强 */
+.ant-btn {
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.ant-btn:hover {
+  transform: translateY(-1px);
+}
+
+/* 滚动条美化 */
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* 自定义主题色 */
+.ant-btn-primary {
+  background: linear-gradient(135deg, #1890ff 0%, #096dd9 100%);
+  border: none;
+  box-shadow: 0 2px 4px rgba(24, 144, 255, 0.3);
+}
+
+.ant-btn-primary:hover {
+  background: linear-gradient(135deg, #40a9ff 0%, #1890ff 100%);
+  box-shadow: 0 4px 8px rgba(24, 144, 255, 0.4);
+}
+
+/* 文字选择样式 */
+::selection {
+  background: rgba(24, 144, 255, 0.2);
+  color: #1890ff;
+} 

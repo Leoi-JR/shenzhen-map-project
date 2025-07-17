@@ -1,0 +1,258 @@
+/* 图片地图区域样式 */
+.image-map-area {
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  position: relative;
+  height: 780px; /* 固定Card总高度 */
+}
+
+.image-map-area .ant-card-head {
+  height: 72px; /* 固定header高度 */
+  min-height: 72px;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+}
+
+.image-map-area .ant-card-head-title {
+  padding: 16px 0;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.image-map-area .ant-card-body {
+  height: calc(100% - 72px); /* 减去header高度 */
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.image-map-area.active {
+  border: 2px solid #1890ff;
+  box-shadow: 0 0 10px rgba(24, 144, 255, 0.3);
+}
+
+.area-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* 上传区域 */
+.upload-area {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.upload-dropzone {
+  width: 100%;
+  height: 300px;
+  border: 2px dashed #d9d9d9;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: #fafafa;
+}
+
+.upload-dropzone:hover {
+  border-color: #1890ff;
+  background: #f0f8ff;
+}
+
+.upload-dropzone.drag-active {
+  border-color: #1890ff;
+  background: #e6f7ff;
+}
+
+.upload-dropzone.highlight {
+  border-color: #52c41a;
+  background: #f6ffed;
+  animation: pulse 2s infinite;
+}
+
+.upload-icon {
+  font-size: 48px;
+  color: #d9d9d9;
+  margin-bottom: 16px;
+}
+
+.upload-text {
+  text-align: center;
+}
+
+/* 图片容器 */
+.image-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* 占满Card body */
+  padding: 20px;
+}
+
+.operation-hint {
+  padding: 8px 12px;
+  background: #f0f8ff;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  text-align: center;
+  flex-shrink: 0; /* 不压缩 */
+}
+
+.image-wrapper {
+  flex: 1; /* 自动填充剩余空间 */
+  border: 1px solid #d9d9d9;
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+  background: #f5f5f5;
+}
+
+/* Transform组件样式 */
+.transform-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.transform-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 图片内容容器 */
+.image-content {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.uploaded-image {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  user-select: none;
+  -webkit-user-drag: none;
+  object-fit: contain;
+}
+
+/* 标记点样式 */
+.image-marker {
+  position: absolute;
+  pointer-events: none;
+}
+
+.marker-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.marker-dot.current {
+  background-color: #ff4d4f;
+  border-color: white;
+}
+
+.marker-dot.completed {
+  background-color: #52c41a;
+  border-color: white;
+}
+
+/* 当前标记点的脉冲动画 */
+.marker-pulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ff4d4f;
+  border-radius: 50%;
+  animation: pulse-ring 1.5s ease-out infinite;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2);
+    opacity: 0;
+  }
+}
+
+/* 坐标显示 */
+.coordinate-display {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: #f9f9f9;
+  border-top: 1px solid #d9d9d9;
+  font-family: monospace;
+  flex-shrink: 0; /* 不压缩 */
+}
+
+/* 高亮动画 */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .image-map-area {
+    height: 560px; /* 移动端Card总高度 */
+  }
+  
+  .image-map-area .ant-card-head {
+    height: 72px; /* 移动端也保持一致的header高度 */
+    min-height: 72px;
+  }
+  
+  .image-map-area .ant-card-body {
+    height: calc(100% - 72px); /* 保持一致的header高度计算 */
+  }
+  
+  .upload-dropzone {
+    height: 200px;
+  }
+  
+  .upload-icon {
+    font-size: 36px;
+    margin-bottom: 12px;
+  }
+  
+  .coordinate-display {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+  
+  .marker-dot {
+    width: 10px;
+    height: 10px;
+  }
+  
+  .marker-pulse {
+    width: 16px;
+    height: 16px;
+  }
+} 

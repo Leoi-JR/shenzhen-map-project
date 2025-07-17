@@ -1,0 +1,36 @@
+.saved-files-list {
+  margin-top: 16px;
+}
+
+.saved-files-list .area-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.saved-files-list .file-count {
+  margin-left: auto;
+}
+
+.saved-files-list .list-container {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.saved-files-list .empty-description {
+  text-align: center;
+  padding: 20px;
+}
+
+.saved-files-list .files-table {
+  font-size: 12px;
+}
+
+.saved-files-list .files-table .ant-table-thead > tr > th {
+  background: #fafafa;
+  font-weight: 600;
+}
+
+.saved-files-list .files-table .ant-table-tbody > tr:hover > td {
+  background: #f5f5f5;
+} 
