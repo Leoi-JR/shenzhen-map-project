@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#1890ff" />
+    <meta name="description" content="深圳地图项目合成版 - 集成了坐标标记和地图映射功能" />
+    <title>深圳地图项目合成版</title>
+    <style>
+      /* 加载动画 */
+      #loading {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #f0f2f5;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+      }
+      
+      .loading-spinner {
+        width: 40px;
+        height: 40px;
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #1890ff;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      
+      .loading-text {
+        margin-top: 16px;
+        color: #666;
+        font-size: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>您需要启用JavaScript才能运行此应用。</noscript>
+    <div id="loading">
+      <div style="text-align: center;">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">正在加载深圳地图项目...</div>
+      </div>
+    </div>
+    <div id="root"></div>
+    <script>
+      // 应用加载完成后隐藏加载画面
+      window.addEventListener('load', function() {
+        const loading = document.getElementById('loading');
+        if (loading) {
+          loading.style.display = 'none';
+        }
+      });
+    </script>
+  </body>
+</html> 
